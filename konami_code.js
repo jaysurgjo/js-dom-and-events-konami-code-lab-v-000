@@ -1,23 +1,20 @@
 const code = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]
 
-let index = 0;
+function init() {
+  var count = 0;
 
-function init(e) {
+  document.body.addEventListener('keydown', function(e) {
+    var key = parseInt(e.detail || e.which);
 
-	document.body.addEventListener('keydown', function(e) {
-		const key = parseInt(e.detail || e.which);
+    if (key === code[count]) {
+      count ++
 
-		if (key === code[index]) {
-	    index++;
-
-	    if (index === code.length) {
-	      alert("You're a Konami King!");
-
-	      index = 0;
-	    }
-	  } else {
-	    index = 0;
-	  }
-
-
-	});
+      if (count === code.length-1) {
+        alert('you have reached konami master status')
+        count = 0
+      }
+    } else {
+      count = 0;
+    }
+  });
+}
